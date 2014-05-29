@@ -1,4 +1,5 @@
 M.wrap('github/lucaboieru/client-form-validation/dev/validate.js', function (require, module, exports) {
+
 var Bind = require('github/jillix/bind');
 var Events = require('github/jillix/events');
 
@@ -22,17 +23,13 @@ function validate (callback) {
 
     var self = this;
     var field = "";
-    var typeMismatch = "";
-    var patternMismatch = "";
 
     $(self.config.form.selector + " input, " + self.config.form.selector + " textarea").each(function (i) {
-    	if (!this.checkValidity()) {
-            field = $(this).attr("name");
-            typeMismatch = this.validity.typeMismatch;
-            patternMismatch = this.validity.patternMismatch;
+    	if (this.checkValidity && !this.checkValidity()) {
+            field = this;
             return false;
         }
-    }).promise().done(function () { callback(field, typeMismatch, patternMismatch); });
+    }).promise().done(function () { callback(field); });
 }
 
 module.exports = init;
