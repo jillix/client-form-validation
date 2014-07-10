@@ -1,5 +1,6 @@
 M.wrap('github/lucaboieru/client-form-validation/dev/validate.js', function (require, module, exports) {
 
+
 var Bind = require('github/jillix/bind');
 var Events = require('github/jillix/events');
 
@@ -9,7 +10,6 @@ function init (config) {
     // prepare module
     self.config = config;
     self.config.form = config.form || {};
-    self.config.form.selector = config.form.selector || "#validate";
 
     // listen to external events
     Events.call(self, config);
@@ -19,12 +19,12 @@ function init (config) {
     self.emit('ready');
 }
 
-function validate (callback) {
+function validate (form, callback) {
 
     var self = this;
     var field = "";
 
-    $(self.config.form.selector + " input, " + self.config.form.selector + " textarea").each(function (i) {
+    $("#" + form + " input, #" + form + " textarea, #" + form + " select").each(function (i) {
     	if (this.checkValidity && !this.checkValidity()) {
             field = this;
             return false;
