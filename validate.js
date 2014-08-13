@@ -1,6 +1,3 @@
-M.wrap('github/lucaboieru/client-form-validation/dev/validate.js', function (require, module, exports) {
-
-
 var Bind = require('github/jillix/bind');
 var Events = require('github/jillix/events');
 
@@ -33,4 +30,4 @@ function validate (form, callback) {
 }
 
 module.exports = init;
-return module; });
+
