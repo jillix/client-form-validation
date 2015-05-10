@@ -16,12 +16,12 @@ function init (config) {
     self.emit('ready');
 }
 
-function validate (form, callback) {
+function validate ($form, callback) {
 
     var self = this;
     var field = "";
 
-    $("#" + form + " input, #" + form + " textarea, #" + form + " select").each(function (i) {
+    $form.find("input, textarea, select").each(function (i) {
     	if (this.checkValidity && !this.checkValidity()) {
             field = this;
             return false;
@@ -30,4 +30,3 @@ function validate (form, callback) {
 }
 
 module.exports = init;
-
